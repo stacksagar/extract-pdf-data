@@ -1,16 +1,16 @@
 import { exportImages } from "pdf-export-images";
-import { api } from "../config.js";
-import fs from "fs";
-import path from "path";
+// import { api } from "../config.js";
+// import fs from "fs";
+// import path from "path";
 import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 export default async function ExtractImagesFromPDF(req, res, next) {
   try {
     const images = await exportImages(req?.pdfFile, "uploads");
     req.images = images;
-    console.log("images ", images);
+
     next();
   } catch (error) {
     return res.json({ error: error?.message });
