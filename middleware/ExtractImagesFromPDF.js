@@ -7,8 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default async function ExtractImagesFromPDF(req, res, next) {
-  req.images = [path.join(__dirname, "uploads")];
-  next();
+  try {
+    const images = await exportImages(req?.pdfFile, "uploads");
+    req.images = images;
+    console.log("images ", images);
+    next();
+  } catch (error) {
+    return res.json({ error: error?.message });
+  }
   // try {
   //   const images = await exportImages(req?.pdfFile, "uploads");
 
