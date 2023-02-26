@@ -11,9 +11,7 @@ export default async function ExtractImagesFromPDF(req, res, next) {
 
       const oldPath = `./uploads/${image.file?.split("\\")[1]}`;
 
-      const newFileName = `${Date.now()}-${
-        images?.length > 2 ? "picture" : type
-      }.png`;
+      const newFileName = `${Date.now()}-${type}.png`;
       const newPath = `./uploads/${newFileName}`;
 
       fs.renameSync(oldPath, newPath);

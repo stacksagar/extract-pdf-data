@@ -14,8 +14,6 @@ router.post(
   ExtractTextFromPDF,
   function (req, res) {
     try {
-      console.log("pdfFile ", req?.pdfFile);
-
       const images = req?.images;
       const texts = req?.pdf_text_body;
       // const formatted = req?.pdf_text_json;
